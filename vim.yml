@@ -1,0 +1,10 @@
+---
+- name: Install vim packages
+  hosts: centos
+  become: true
+  tasks:
+    
+    - name: Ensure vim package is installed
+      ansible.builtin.dnf:
+        name: vim
+        state: latest

@@ -1,0 +1,10 @@
+- name: Deploy web server using ansible
+  hosts: centos3
+  become: true
+  tasks:
+
+    - name: Deplopy Webserver using apache
+      include_role:
+        name: deploy-web-server
+
+

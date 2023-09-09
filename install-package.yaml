@@ -1,0 +1,26 @@
+---
+- name: Install chrony packages
+  hosts: centos2
+  become: true
+  tasks:
+
+    - name: Ensure chrony packages are installed
+      ansible.builtin.dnf:
+        name: chrony
+        state: latest
+
+    - name: Copy Chrony configuration files to centos2
+      ansible.builtin.copy:
+        src: chrony.conf.sample
+        dest: /etc/chrony.conf
+        mode: 644
+        owner: root
+        group: root
+
+
+    - name: Enable and chrony Service
+      ansible.builtin.systemd:
+        name: chronyd
+        state: started
+        enabled: yes
+        masked: no
