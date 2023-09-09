@@ -1,0 +1,10 @@
+---
+- name: Install chrony packages
+  hosts: centos1,p=2222
+  become: true
+  tasks:
+
+    - name: Ensure chrony packages are installed
+      ansible.builtin.dnf:
+        name: chrony
+        state: latest
